@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
 
+    'nakano.apps.NakanoConfig',
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',
