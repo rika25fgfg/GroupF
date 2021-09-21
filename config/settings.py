@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
 
     'kisara.apps.KisaraConfig',
+    'accounts.apps.AccountsConfig'
 
     'django.contrib.sites',
     'allauth',
