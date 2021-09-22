@@ -10,6 +10,22 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+body,#wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.my-div-style{
+  margin-top: 6rem;
+}
+
+
+footer{
+  margin-top: auto;
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -60,7 +76,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #fff;
+  --bs-body-bg: rgb(0, 0, 0);
 }
 
 *,
@@ -636,6 +652,7 @@ progress {
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+  
 }
 
 @media (min-width: 576px) {
@@ -4164,6 +4181,7 @@ textarea.form-control-lg {
   }
   .navbar-expand-lg .navbar-nav {
     flex-direction: row;
+    
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
@@ -11031,7 +11049,7 @@ blockquote {
   right: 0;
   z-index: 1030;
   border-bottom: 1px solid #dee2e6;
-  background-color: #fff;
+  background-color: #000;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 #mainNav .navbar-brand {
@@ -11112,7 +11130,7 @@ header.masthead {
   padding-top: calc(8rem + 57px);
   padding-bottom: 8rem;
   background: no-repeat center center;
-  background-color: #6c757d;
+  background-color: #000000;
   background-size: cover;
   background-attachment: scroll;
 }

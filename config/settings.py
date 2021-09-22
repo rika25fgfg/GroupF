@@ -37,10 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig',
 
     'kisara.apps.KisaraConfig',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
 
     'django.contrib.sites',
     'allauth',
