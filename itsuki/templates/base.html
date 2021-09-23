@@ -41,6 +41,14 @@
         </nav>
         <!-- Header-->
         {% block header %}{% endblock %}
+
+        {% if messages %}
+        <div class="container">
+            {% for messages in messages %}
+            {{messages}}
+            {% endfor %}
+        </div>
+        {% endif %}
         <!-- Content -->
         {% block contents %}{% endblock %}
         <!-- Footer-->
