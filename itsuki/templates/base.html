@@ -44,9 +44,17 @@
 
         {% if messages %}
         <div class="container">
-            {% for messages in messages %}
-            {{messages}}
-            {% endfor %}
+            <div class="row">
+                <div class="my-div-style w-100">
+                    <ul class="messages" style="list-style: none;">
+                        {% for messages in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                            {{messages}}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
         {% endif %}
         <!-- Content -->

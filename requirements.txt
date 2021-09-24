@@ -1,5 +1,7 @@
 Django==2.2.2
 django-allauth==0.45.0
 pylint-django==2.4.4
+django-allauth==0.45.0
+#admin@hoge.jp
 
 # https://startbootstrap.com/theme/clean-blog
