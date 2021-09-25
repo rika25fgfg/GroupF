@@ -1,5 +1,6 @@
 import logging
 from django.contrib import messages
+from django.contrib.messages.api import success
 from django.db import models
 from django.urls import reverse_lazy
 from django.core.mail import message
@@ -75,3 +76,12 @@ class DiaryUpdateView(LoginRequiredMixin, generic.UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, "日記の更新に失敗しました。")
         return super().form_invalid(form)
+
+class DiaryDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Diary
+    template_name = 'diary_delete.html'
+    success_url = reverse_lazy('itsuki:diary_list')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "日記を削除しました。")
+        return super().delete(request, *args, **kwargs)
