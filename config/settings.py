@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e&m+%w+(#2%#$m1fuma=f4sq+3-y5#tj0n320fvb_*bksue=4n'
+SECRET_KEY = 'uj(s$rhwb17nc*xci4coazzqpb)v+gybckt^jdd(b@hdcq=^z^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig',
 
     'nakano.apps.NakanoConfig',
+    'accounts.apps.AccountsConfig',
 
     'django.contrib.sites',
     'allauth',
@@ -126,10 +126,77 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#from.settings_common import *
+
+#DEBUG = True
+
+#ALLOWED_HOSTS = []
+
+#LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+
+#    'loggers': {
+#        'django': {
+#            'handlers':['console'],
+#            'level': 'INFO',
+#        },
+#        'diary': {
+#            'handlers':['console'],
+#            'level': 'DEBUG',
+#        },
+#    },
+#    'handlers': {
+#        'console': {
+#            'level': 'DEBUG',
+#            'class': 'logging.StreamHandler',
+#            'formatter': 'dev'
+#        },
+#    },
+#    'formatters': {
+#        'dev': {
+#            'format': '\t'.join([
+#                '%(asctime)s',
+#                '[%(levelname)s]',
+#                '%(pathname)s(Line:%(lineno)d)',
+#                '%(message)s'
+#            ])
+#        },
+#    }
+#}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'alert alert-danger',
+    messages.WARNING: 'alert alert-warning',
+    messages.SUCCESS: 'alert alert-success',
+    messages.INFO: 'alert alert-info',
+}
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+LOGIN_REDIRECT_URL = 'diary:index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+ACCOUNT_LOGOUT_ON_GET = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'diary:diary_list'
