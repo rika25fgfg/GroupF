@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
 
+    'kuroiwa.apps.KuroiwaConfig',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
