@@ -66,7 +66,8 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = DiaryCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hasegawa:diary_detail',kwargs={'pk': self.kwargs['pk']})
+        # return reverse_lazy('hasegawa:diary_detail',kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hasegawa:diary_list')
     def form_valid(self,form):
         messages.success(self.request, "日記を更新しました。")
         return super().form_valid(form)
