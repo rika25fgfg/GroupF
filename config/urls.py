@@ -1,5 +1,4 @@
 """config URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
@@ -15,9 +14,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/',include('allauth.urls')),
-    path('',include('kuroiwa.urls')),
+    path('kuroiwa/', include('kuroiwa.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
+
+from . import settings
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
