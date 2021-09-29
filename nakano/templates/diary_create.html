@@ -1,26 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %}日記作成 | Private Diary{% endblock %}
-
+{% block title %}日記作成 | PrivateDiary{% endblock %}
+{% block header%}
+        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>DIARY CREATE</h1>
+                            <span class="subheading">日記の新規作成</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+{% endblock %}
 {% block active_diary_list %}active{% endblock %}
-
-
 {% block contents %}
-<br>
-<br>
-<br>
-<br>
 <div class="container">
     <div class="row">
-        <div class="my-div-style  w-100">
-            <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table class="table">
-                {{ form.as_table }}
-            </table>
-            <button class="btn btn-primary" type="submit">作成</button>
-        </form>
+        <div class="my-div-style w-100">
+            <form method="POST" enctype='multipart/form-data'>
+             {% csrf_token %}
+             <table class="table">
+                 {{ form.as_table }}
+             </table>
+             <button class="btn btn-primary" type="submit">作成</button>
+            </form>
         </div>
     </div>
 </div>
