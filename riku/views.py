@@ -17,7 +17,7 @@ class IndexView(generic.TemplateView):
 class InquiryView(generic.FormView):
     template_name = "inquiry.html"
     form_class = InquiryForm
-    success_url = reverse_lazy('hasegawa:inquiry')
+    success_url = reverse_lazy('Riku:inquiry')
 
     def form_valid(self, form):
         form.send_email()
@@ -31,7 +31,7 @@ from .models import Diary
 class DiaryListView(LoginRequiredMixin,generic.ListView):
     model = Diary
     template_name = 'diary_list.html'
-    success_url = reverse_lazy('hasegawa:diary_list')
+    success_url = reverse_lazy('Riku:diary_list')
     paginate_by = 2
 
 
@@ -48,7 +48,7 @@ class DiaryCreateView(LoginRequiredMixin,generic.CreateView):
     model = Diary
     template_name = 'diary_create.html'
     form_class = DiaryCreateForm
-    success_url = reverse_lazy('hasegawa:diary_list')
+    success_url = reverse_lazy('Riku:diary_list')
 
     def form_valid(self, form):
         diary = form.save(commit=False)
@@ -66,8 +66,8 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = DiaryCreateForm
 
     def get_success_url(self):
-        # return reverse_lazy('hasegawa:diary_detail',kwargs={'pk': self.kwargs['pk']})
-        return reverse_lazy('hasegawa:diary_list')
+        # return reverse_lazy('Riku:diary_detail',kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('Riku:diary_list')
     def form_valid(self,form):
         messages.success(self.request, "日記を更新しました。")
         return super().form_valid(form)
@@ -78,7 +78,7 @@ class DiaryUpdateView(LoginRequiredMixin,generic.UpdateView):
 class DiaryDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Diary
     template_name = 'diary_delete.html'
-    success_url = reverse_lazy('hasegawa:diary_list')
+    success_url = reverse_lazy('Riku:diary_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "日記を削除しました。")

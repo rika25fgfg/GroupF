@@ -24,7 +24,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 =======
     path('accounts/',include('allauth.urls')),
-    path('hasegawa/',include('hasegawa.urls')),
+    path('Riku/',include('Riku.urls')),
 >>>>>>> d93b4ee0c215add6d39c9eb7255d492afbdfeab6
 ]
 

@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'itsuki.apps.ItsukiConfig',
 
 =======
-    'hasegawa.apps.HasegawaConfig',
+    'Riku.apps.RikuConfig',
+    'riku.apps.RikuConfig',
+
 
     'accounts.apps.AccountsConfig',
 >>>>>>> d93b4ee0c215add6d39c9eb7255d492afbdfeab6
@@ -170,5 +172,5 @@ MESSAGE_TAGS = {
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'hasegawa:diary_list'
+LOGIN_REDIRECT_URL = 'Riku:diary_list'
 >>>>>>> d93b4ee0c215add6d39c9eb7255d492afbdfeab6
