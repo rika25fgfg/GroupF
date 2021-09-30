@@ -1,5 +1,4 @@
 """config URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
@@ -14,18 +13,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.staticfiles.urls import static
 from django.urls import path,include
-
-from . import settings, settings
+from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/',include('allauth.urls')),
-    path('',include('kuroiwa.urls')),
-    path('accounts/',include('allauth.urls')),
+    path('kuroiwa/', include('kuroiwa.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
-# 開発サーバーでメディアを配信できるようにする設定
-urlpatterns += static(settings.MEDIA_URL,
-document_root=settings.MEDIA_ROOT)
+from . import settings
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
