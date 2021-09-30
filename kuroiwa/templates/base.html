@@ -38,8 +38,8 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="{% url 'kuroiwa:inquiry' %}">Inquiry</a></li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item {% block active_diary_list %}{% endblock %}"><a
-                            class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'kuroiwa:diary_list' %}">DIARY LIST</a>
+                    <li class="nav-item {% block active_diary_list %}{% endblock %}"></li>
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'kuroiwa:diary_list' %}">DIARY LIST</a>
                     </li>
                     {% endif %}
                     {% if user.is_authenticated %}

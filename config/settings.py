@@ -7,6 +7,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from logging import INFO, WARNING
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -17,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'uj(s$rhwb17nc*xci4coazzqpb)v+gybckt^jdd(b@hdcq=^z^'
+SECRET_KEY = 'e&m+%w+(#2%#$m1fuma=f4sq+3-y5#tj0n320fvb_*bksue=4n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -123,77 +124,53 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-#from.settings_common import *
-
-#DEBUG = True
-
-#ALLOWED_HOSTS = []
-
-#LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-
-#    'loggers': {
-#        'django': {
-#            'handlers':['console'],
-#            'level': 'INFO',
-#        },
-#        'diary': {
-#            'handlers':['console'],
-#            'level': 'DEBUG',
-#        },
-#    },
-#    'handlers': {
-#        'console': {
-#            'level': 'DEBUG',
-#            'class': 'logging.StreamHandler',
-#            'formatter': 'dev'
-#        },
-#    },
-#    'formatters': {
-#        'dev': {
-#            'format': '\t'.join([
-#                '%(asctime)s',
-#                '[%(levelname)s]',
-#                '%(pathname)s(Line:%(lineno)d)',
-#                '%(message)s'
-#            ])
-#        },
-#    }
-#}
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
-    messages.ERROR: 'alert alert-danger',
-    messages.WARNING: 'alert alert-warning',
-    messages.SUCCESS: 'alert alert-success',
-    messages.INFO: 'alert alert-info',
+    messages.ERROR:'alert alert-danger',
+    messages.WARNING:'alert alert-warning',
+    messages.SUCCESS:'alert alert-success',
+    messages.INFO:'alert alert-info',
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+#django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
 SITE_ID = 1
+
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
+    #一般ユーザー用(メールアドレス認識)
     'django.contrib.auth.backends.ModelBackend',
+    #管理サイト用(ユーザー名認識)
 )
 
+#メールアドレス確認に変更する設定
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
+
+#サインアップにメールアドレス確認をはさむよう設定
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
-LOGIN_REDIRECT_URL = 'diary:index'
+
+#ログイン/ログアウト後の遷移先を設定
+LOGIN_REDIRECT_URL = 'kuroiwa:index'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+#ログアウトリンクのクリック一発でログアウトする設定
 ACCOUNT_LOGOUT_ON_GET = True
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+#djagango-allauthが送信するメールの件名に自動付与される接頭辞をブランクにする設定
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 
-LOGIN_REDIRECT_URL = 'diary:diary_list'
+#デフォルトのメール送信元を設定
+DEFAULT_FROM_EMAIL = 'admin@example.com'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
