@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('itsuki', include('itsuki.urls')),
     path('accounts/', include('allauth.urls')),
+=======
+    path('accounts/',include('allauth.urls')),
+    path('hasegawa/',include('hasegawa.urls')),
+>>>>>>> d93b4ee0c215add6d39c9eb7255d492afbdfeab6
 ]
+
+from django.contrib.staticfiles.urls import static
+from . import settings
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
